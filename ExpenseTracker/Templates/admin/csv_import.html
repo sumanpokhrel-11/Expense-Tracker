@@ -1,0 +1,13 @@
+
+{% block content %}
+<div class="container">
+    <h2>Import Books from CSV</h2>
+    <form action="." method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div style="margin-bottom: 20px;">
+            <input type="file" name="csv_file" accept=".csv" required>
+        </div>
+        <input type="submit" value="Import CSV" class="default" style="float: none">
+    </form>
+</div>
+{% endblock %}

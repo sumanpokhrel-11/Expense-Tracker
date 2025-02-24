@@ -1,0 +1,31 @@
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Import Books from CSV</h2>
+    
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="csv_file">Select CSV File</label>
+                    <input type="file" class="form-control-file" id="csv_file" name="csv_file" accept=".csv" required>
+                    <small class="form-text text-muted">Please upload a CSV file with the required columns.</small>
+                </div>
+                <button type="submit" class="btn btn-primary">Import Books</button>
+                <a href="{% url 'bookexpense:book_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
